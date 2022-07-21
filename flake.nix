@@ -51,6 +51,7 @@
                   nixpkgs = nixpkgsConfig;
                   imports = [
                     ./home/gui/vscode
+                    ./home/gui/discord
                   ];
                 };
               };
