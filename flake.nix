@@ -49,7 +49,9 @@
                 users.jacob = {
                   home.stateVersion = "21.11";
                   nixpkgs = nixpkgsConfig;
-                  imports = [];
+                  imports = [
+                    ./home/gui/vscode.nix
+                  ];
                 };
               };
             }
