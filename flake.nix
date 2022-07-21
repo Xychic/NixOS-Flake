@@ -50,7 +50,7 @@
                   home.stateVersion = "21.11";
                   nixpkgs = nixpkgsConfig;
                   imports = [
-                    ./home/gui/vscode.nix
+                    ./home/gui/vscode
                   ];
                 };
               };
