@@ -9,13 +9,24 @@
       url = "github:numtide/nixpkgs-unfree";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    home-manager,
     ...
-  }:
+  }: let 
+   nixpkgsConfig = {
+     config = {
+       allowUnfree = true;
+     };
+   };
+  in
     {
       # Lenovo-V330
       nixosConfigurations.V330 = nixpkgs.lib.nixosSystem rec {
@@ -24,9 +35,26 @@
           systemName = "V330";
           inherit inputs;
         };
-      modules = [
-        ./V330/configuration.nix
-      ];
+        modules = [
+          ./V330
+          home-manager.nixosModules.home-manager
+          (
+            {
+              pkgs,
+              home-manager,
+              ...
+            }: {
+              home-manager = {
+                extraSpecialArgs = specialArgs;
+                users.jacob = {
+                  home.stateVersion = "21.11";
+                  nixpkgs = nixpkgsConfig;
+                  imports = [];
+                };
+              };
+            }
+          )
+        ];
       };
     };
 }
