@@ -50,6 +50,7 @@
                   home.stateVersion = "21.11";
                   nixpkgs = nixpkgsConfig;
                   imports = [
+                    ./home/cli/core
                     ./home/gui/vscode
                     ./home/gui/discord
                   ];
