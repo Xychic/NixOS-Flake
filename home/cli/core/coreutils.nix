@@ -3,7 +3,6 @@
     exa
     ncdu
     neofetch
-    git
     wget
     firefox
   ];
