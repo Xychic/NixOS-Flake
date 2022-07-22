@@ -2,5 +2,6 @@
   imports =
     [
       ./zsh
+      ./coreutils.nix
     ];
 }
