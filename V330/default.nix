@@ -21,11 +21,10 @@
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  # boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true; 
@@ -78,6 +77,7 @@
   users.users.jacob = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
