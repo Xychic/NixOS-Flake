@@ -30,10 +30,10 @@
   discord-unwrapped = discord.override {
     inherit nss;
   };
-in
-  discord-unwrapped.overrideAttrs (oldAttrs: rec {
+in discord-unwrapped.overrideAttrs (oldAttrs: rec {
     desktopItem = oldAttrs.desktopItem.override {
       exec = "${discord-unwrapped}/bin/Discord " + lib.concatStringsSep " " discord-flags;
     };
     installPhase = builtins.replaceStrings ["${oldAttrs.desktopItem}"] ["${desktopItem}"] oldAttrs.installPhase;
-  })
+  }
+)
