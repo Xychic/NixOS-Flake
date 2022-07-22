@@ -84,9 +84,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
-    wget
-    firefox
-    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
