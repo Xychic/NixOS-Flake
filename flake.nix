@@ -56,6 +56,7 @@
                   ./home/cli/core
                   ./home/gui/vscode
                   ./home/gui/discord
+                  ./home/gui/chrome
                   ./home/window-managers/kde
                 ];
               };

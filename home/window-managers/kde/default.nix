@@ -24,6 +24,7 @@ let
     "$DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file $confdir/'kscreenlockerrc' --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' --key 'Image' '${inputs.wallpapers}/nixos.svg'"
     "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-wallpaperimage '${inputs.wallpapers}/nixos.svg'"
     "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-desktoptheme 'breeze-dark'"
+    "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-lookandfeel -a 'org.kde.breezedark.desktop'"
   ];
 in
 {
