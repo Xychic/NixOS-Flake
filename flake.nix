@@ -13,6 +13,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpapers = {
+      url = "github:Xychic/desktop-wallpapers";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -52,6 +56,7 @@
                   ./home/cli/core
                   ./home/gui/vscode
                   ./home/gui/discord
+                  ./home/window-managers/kde
                 ];
               };
             };
