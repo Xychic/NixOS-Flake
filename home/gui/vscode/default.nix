@@ -1,8 +1,13 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [ vscode ];
+  home.packages = with pkgs; [ 
+    vscode
+  ];
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
+    extensions = with pkgs.vscode-extensions; [
+      rust-lang.rust-analyzer
+    ]
+    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
     userSettings = {
       "editor.renderWhitespace" = "trailing";
       "update.mode" = "none";
@@ -20,7 +25,7 @@
         "python" = "cd $dir && python -u $fileName";
         "c" = "cd $dir && gcc $fileName -lm -o $fileNameWithoutExt && ./$fileNameWithoutExt";
         "java" = "cd $dir && javac $fileName -d ./bin/ && java -cp ./bin/ $fileNameWithoutExt";
-        "rust" = "cd $dir && cargo fmt && cargo test --release && cargo run --release";
+        "rust" = "cd $dir && nix-shell -p cargo rustup --command \"cargo fmt && cargo test --release && cargo run --release\"";
         "go" = "cd $dir && go test -v && go run main.go";
       };
       "python.languageServer" = "Pylance";

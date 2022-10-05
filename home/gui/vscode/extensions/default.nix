@@ -10,6 +10,7 @@ builtins.map import [
   # Languages
   ## Nix
   ./bbenoist.Nix.nix
+  ./arrterian.nix-env-selector.nix
   ## Go
   ./golang.Go.nix
   ## Haskell
@@ -23,5 +24,4 @@ builtins.map import [
   ./ms-python.python.nix
   ./njqdev.vscode-python-typehint.nix
   ## Rust
-  ./rust-lang.rust-analyzer.nix
 ]
