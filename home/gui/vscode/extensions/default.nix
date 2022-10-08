@@ -6,6 +6,7 @@ builtins.map import [
   ./streetsidesoftware.code-spell-checker.nix
   ./esbenp.prettier-vscode.nix
   ./Gruntfuggly.todo-tree.nix
+  ./telesoho.vscode-markdown-paste-image.nix
 
   # Languages
   ## Nix
@@ -22,6 +23,4 @@ builtins.map import [
   ./ms-python.vscode-pylance.nix
   ./ms-python.python.nix
   ./njqdev.vscode-python-typehint.nix
-  ## Rust
-  ./rust-lang.rust-analyzer.nix
 ]

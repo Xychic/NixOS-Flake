@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
+    extensions = with pkgs.vscode-extensions;
+      [
+        rust-lang.rust-analyzer
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
     userSettings = {
       "editor.renderWhitespace" = "trailing";
       "update.mode" = "none";
@@ -53,6 +57,8 @@
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "window.zoomLevel" = 1;
+      "MarkdownPaste.path" = "\${fileDirname}/images";
+      "terminal.integrated.defaultLocation" = "editor";
     };
   };
 }

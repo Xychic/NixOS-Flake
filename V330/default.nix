@@ -1,33 +1,37 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   nix = {
-    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-  }; 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    nixPath = ["/etc/nix/path"];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
+  environment.etc."/nix/path/nixpkgs".source = inputs.nixpkgs;
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.devices = ["nodev"];
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.version = 2;
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true; 
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -53,11 +57,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "gb";
@@ -76,7 +78,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -85,6 +87,12 @@
   environment.systemPackages = with pkgs; [
     vim
   ];
+
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-uuid/FC76DE5C76DE176C";
+    fsType = "ntfs";
+    options = ["uid=1000" "rw"];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

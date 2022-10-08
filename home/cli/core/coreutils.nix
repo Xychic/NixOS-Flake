@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     exa
-    ncdu
+    ncdu_2
     neofetch
     wget
-    firefox
+    xclip
+    comma
   ];
 }

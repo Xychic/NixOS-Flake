@@ -13,14 +13,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    grub2-themes,
     ...
-  }: let 
+  }: let
     nixpkgsConfig = {
       config = {
         allowUnfree = true;
@@ -52,6 +56,8 @@
                   ./home/cli/core
                   ./home/gui/vscode
                   ./home/gui/discord
+                  ./home/gui/chrome
+                  ./home/gui/core
                 ];
               };
             };
