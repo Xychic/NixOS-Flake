@@ -16,6 +16,7 @@
     wallpapers = {
       url = "github:Xychic/desktop-wallpapers";
       flake = false;
+    };
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
@@ -93,6 +94,7 @@
                 nixpkgs = nixpkgsConfig;
                 imports = [
                   ./home/cli/core
+                  ./home/cli/mpd
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome

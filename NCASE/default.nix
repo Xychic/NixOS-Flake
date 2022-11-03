@@ -2,9 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    nixPath = ["/etc/nix/path"];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
+  environment.etc."/nix/path/nixpkgs".source = inputs.nixpkgs;
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -85,8 +96,15 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+  # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
