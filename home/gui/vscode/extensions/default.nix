@@ -1,11 +1,11 @@
 builtins.map import [
   # General extensions
   ./emmanuelbeziat.vscode-great-icons.nix
-  ./2gua.rainbow-brackets.nix
   ./formulahendry.code-runner.nix
   ./streetsidesoftware.code-spell-checker.nix
   ./esbenp.prettier-vscode.nix
   ./Gruntfuggly.todo-tree.nix
+  ./telesoho.vscode-markdown-paste-image.nix
 
   # Languages
   ## Nix
@@ -23,5 +23,8 @@ builtins.map import [
   ./ms-python.vscode-pylance.nix
   ./ms-python.python.nix
   ./njqdev.vscode-python-typehint.nix
+<<<<<<< HEAD
   ## Rust
+=======
+>>>>>>> master
 ]

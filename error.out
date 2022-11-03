@@ -1,0 +1,18 @@
+× NetworkManager-wait-online.service - Network Manager Wait Online
+     Loaded: loaded (/etc/systemd/system/NetworkManager-wait-online.service; enabled; preset: enabled)
+    Drop-In: /nix/store/nbicwmvcagdiva1il7m0b5ib6ay5v0qd-system-units/NetworkManager-wait-online.service.d
+             └─overrides.conf
+     Active: failed (Result: exit-code) since Wed 2022-10-12 10:00:35 BST; 112ms ago
+   Duration: 29min 34.217s
+       Docs: man:nm-online(1)
+    Process: 5368 ExecStart=/nix/store/fw59zkmx4429pnmvirf1cr0240ybmwym-networkmanager-1.40.0/bin/nm-online -s -q (code=exited, status=1/FAILURE)
+   Main PID: 5368 (code=exited, status=1/FAILURE)
+         IP: 0B in, 0B out
+        CPU: 81ms
+
+Oct 12 09:59:35 nixos systemd[1]: Starting Network Manager Wait Online...
+Oct 12 10:00:35 nixos systemd[1]: NetworkManager-wait-online.service: Main process exited, code=exited, status=1/FAILURE
+Oct 12 10:00:35 nixos systemd[1]: NetworkManager-wait-online.service: Failed with result 'exit-code'.
+Oct 12 10:00:35 nixos systemd[1]: Failed to start Network Manager Wait Online.
+warning: error(s) occurred while switching to the new configuration
+./generate_readme/target/

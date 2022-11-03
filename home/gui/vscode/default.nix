@@ -4,10 +4,11 @@
   ];
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      rust-lang.rust-analyzer
-    ]
-    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
+    extensions = with pkgs.vscode-extensions;
+      [
+        rust-lang.rust-analyzer
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
     userSettings = {
       "editor.renderWhitespace" = "trailing";
       "update.mode" = "none";
@@ -37,6 +38,7 @@
       "editor.guides.bracketPairs" = true;
       "workbench.iconTheme" = "vscode-great-icons";
       "rust-analyzer.procMacro.enable" = false;
+      "rust-analyzer.inlayHints.lifetimeElisionHints.enable" =  "always";
       "diffEditor.ignoreTrimWhitespace" = false;
       "[javascript]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -59,6 +61,8 @@
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "window.zoomLevel" = 1;
+      "MarkdownPaste.path" = "\${fileDirname}/images";
+      "terminal.integrated.defaultLocation" = "editor";
     };
   };
 }

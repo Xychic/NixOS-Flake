@@ -16,6 +16,8 @@
     wallpapers = {
       url = "github:Xychic/desktop-wallpapers";
       flake = false;
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
     };
   };
 
@@ -23,8 +25,9 @@
     self,
     nixpkgs,
     home-manager,
+    grub2-themes,
     ...
-  }: let 
+  }: let
     nixpkgsConfig = {
       config = {
         allowUnfree = true;
@@ -54,9 +57,11 @@
                 nixpkgs = nixpkgsConfig;
                 imports = [
                   ./home/cli/core
+                  ./home/cli/mpd
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
+<<<<<<< HEAD
                   ./home/window-managers/kde
                 ];
               };
@@ -94,6 +99,9 @@
                   ./home/gui/chrome
                   ./home/gui/pavucontrol
                   ./home/window-managers/kde
+=======
+                  ./home/gui/core
+>>>>>>> master
                 ];
               };
             };
