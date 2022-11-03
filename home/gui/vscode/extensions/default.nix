@@ -1,7 +1,6 @@
 builtins.map import [
   # General extensions
   ./emmanuelbeziat.vscode-great-icons.nix
-  ./2gua.rainbow-brackets.nix
   ./formulahendry.code-runner.nix
   ./streetsidesoftware.code-spell-checker.nix
   ./esbenp.prettier-vscode.nix

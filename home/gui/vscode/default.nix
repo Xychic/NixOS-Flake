@@ -35,6 +35,7 @@
       "editor.guides.bracketPairs" = true;
       "workbench.iconTheme" = "vscode-great-icons";
       "rust-analyzer.procMacro.enable" = false;
+      "rust-analyzer.inlayHints.lifetimeElisionHints.enable" =  "always";
       "diffEditor.ignoreTrimWhitespace" = false;
       "[javascript]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";

@@ -54,6 +54,7 @@
                 nixpkgs = nixpkgsConfig;
                 imports = [
                   ./home/cli/core
+                  ./home/cli/mpd
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
