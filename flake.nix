@@ -13,6 +13,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpapers = {
+      url = "github:Xychic/desktop-wallpapers";
+      flake = false;
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
@@ -58,6 +61,43 @@
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
+                  ./home/window-managers/kde
+                ];
+              };
+            };
+          }
+        )
+      ];
+    };
+
+    # NCASE M1
+    nixosConfigurations.NCASE = nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      specialArgs = {
+        systemName = "NCASE";
+        inherit inputs;
+      };
+      modules = [
+        ./NCASE
+        home-manager.nixosModules.home-manager
+        (
+          {
+            pkgs,
+            home-manager,
+            ...
+          }: {
+            home-manager = {
+              extraSpecialArgs = specialArgs;
+              users.jacob = {
+                home.stateVersion = "21.11";
+                nixpkgs = nixpkgsConfig;
+                imports = [
+                  ./home/cli/core
+                  ./home/gui/vscode
+                  ./home/gui/discord
+                  ./home/gui/chrome
+                  ./home/gui/pavucontrol
+                  ./home/window-managers/kde
                   ./home/gui/core
                 ];
               };

@@ -95,8 +95,9 @@
       "inputs": {
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unfree": "nixpkgs-unfree"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-unfree": "nixpkgs-unfree",
+        "wallpapers": "wallpapers"
       }
     },
     "utils": {
@@ -111,6 +112,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1658483921,
+        "narHash": "sha256-0oGBEHn1LnYVOssD2RrnGIaB0pROMnyPBDlpzYVv05Q=",
+        "owner": "Xychic",
+        "repo": "desktop-wallpapers",
+        "rev": "e36d4cbaecefe373720f689675fcf5fb77981840",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Xychic",
+        "repo": "desktop-wallpapers",
         "type": "github"
       }
     }

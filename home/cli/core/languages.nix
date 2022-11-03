@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+{pkgs, ...} : {
+  home.packages = with pkgs;[
+    rustup
+    glibc
+    libgcc
+  ];
+}
+=======
 {pkgs, ...}: {
   home.packages = with pkgs; [
     rustup
@@ -7,3 +16,4 @@
     python310
   ];
 }
+>>>>>>> master
