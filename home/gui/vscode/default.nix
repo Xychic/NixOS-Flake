@@ -63,6 +63,7 @@
       "window.zoomLevel" = 1;
       "MarkdownPaste.path" = "\${fileDirname}/images";
       "terminal.integrated.defaultLocation" = "editor";
+      "terminal.integrated.defaultProfile.linux" = "zsh";
     };
   };
 }
