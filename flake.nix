@@ -32,14 +32,14 @@
     };
   in {
     # Lenovo-V330
-    nixosConfigurations.V330 = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations.v330 = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
         systemName = "V330";
         inherit inputs;
       };
       modules = [
-        ./V330
+        ./v330
         home-manager.nixosModules.home-manager
         (
           {
