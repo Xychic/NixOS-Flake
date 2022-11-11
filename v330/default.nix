@@ -30,7 +30,7 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.version = 2;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "v330"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
