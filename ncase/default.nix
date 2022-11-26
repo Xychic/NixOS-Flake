@@ -32,7 +32,7 @@
     GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
   '';
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ncase"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # NVIDIA drivers are unfree.
