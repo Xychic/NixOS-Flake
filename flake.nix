@@ -57,12 +57,13 @@
                 home.stateVersion = "21.11";
                 nixpkgs = nixpkgsConfig;
                 imports = [
+                  ./home/window-managers/kde
                   ./home/cli/core
                   ./home/cli/mpd
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
-                  ./home/window-managers/kde
+                  ./home/gui/spotify
                 ];
               };
             };
@@ -94,14 +95,15 @@
                 home.stateVersion = "21.11";
                 nixpkgs = nixpkgsConfig;
                 imports = [
+                  ./home/window-managers/kde
                   ./home/cli/core
                   ./home/cli/mpd
+                  ./home/gui/core
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
                   ./home/gui/pavucontrol
-                  ./home/window-managers/kde
-                  ./home/gui/core
+                  ./home/gui/spotify
                 ];
               };
             };
