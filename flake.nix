@@ -107,6 +107,7 @@
             };
           }
         )
+        grub2-themes.nixosModule
       ];
     };
   };
