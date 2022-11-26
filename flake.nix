@@ -73,14 +73,14 @@
     };
 
     # NCASE M1
-    nixosConfigurations.NCASE = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations.ncase = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = {
         systemName = "NCASE";
         inherit inputs;
       };
       modules = [
-        ./NCASE
+        ./ncase
         home-manager.nixosModules.home-manager
         (
           {
