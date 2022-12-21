@@ -6,5 +6,6 @@
     wget
     xclip
     comma
+    neovim
   ];
 }
