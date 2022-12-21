@@ -8,5 +8,6 @@
     comma
     openssl
     btop
+    neovim
   ];
 }
