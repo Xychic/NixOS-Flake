@@ -4,6 +4,7 @@
     gcc
     glibc
     rust-analyzer
+    cargo-generate
     python310
   ];
 }

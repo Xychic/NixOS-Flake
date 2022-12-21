@@ -6,5 +6,7 @@
     wget
     xclip
     comma
+    openssl
+    btop
   ];
 }
