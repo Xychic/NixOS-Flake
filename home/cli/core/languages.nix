@@ -6,5 +6,6 @@
     rust-analyzer
     cargo-generate
     python310
+    gnumake
   ];
 }

@@ -29,6 +29,9 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.version = 2;
+  boot.loader.grub2-theme = {
+    theme = "vimix";
+  };
 
   networking.hostName = "v330"; # Define your hostname.
   networking.networkmanager.enable = true;

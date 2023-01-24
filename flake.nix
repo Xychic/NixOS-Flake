@@ -69,7 +69,7 @@
             };
           }
         )
-        grub2-themes.nixosModule
+        grub2-themes.nixosModules.default
       ];
     };
 
@@ -109,7 +109,7 @@
             };
           }
         )
-        grub2-themes.nixosModule
+        grub2-themes.nixosModules.default
       ];
     };
   };
