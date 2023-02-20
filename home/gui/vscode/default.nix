@@ -28,6 +28,7 @@
         "java" = "cd $dir && javac $fileName -d ./bin/ && java -cp ./bin/ $fileNameWithoutExt";
         "rust" = "cd $dir && cargo fmt && cargo test --release && cargo run --release";
         "go" = "cd $dir && go test -v && go run main.go";
+        "makefile" = "cd $dir && make && ./$(head -n 1 $fileName | cut -d : -f 1)";
       };
       "python.languageServer" = "Pylance";
       "explorer.confirmDelete" = false;

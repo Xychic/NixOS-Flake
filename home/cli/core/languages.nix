@@ -7,5 +7,6 @@
     cargo-generate
     python310
     gnumake
+    gdb
   ];
 }
