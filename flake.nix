@@ -104,6 +104,7 @@
                   ./home/gui/chrome
                   ./home/gui/pavucontrol
                   ./home/gui/spotify
+                  ./home/gui/teams
                 ];
               };
             };
