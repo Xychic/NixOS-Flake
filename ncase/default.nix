@@ -22,15 +22,21 @@
     ];
 
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.default = 2;
-  boot.loader.grub.extraConfig = ''
-    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
-  '';
+  boot.loader.grub = {
+    enable = true;
+    devices = [ "nodev" ];
+    efiSupport = true;
+    useOSProber = true;
+    version = 2;
+    default = 2;
+    extraConfig = ''
+      GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
+    '';
+  };
+  boot.loader.grub2-theme = {
+    theme = "vimix";
+    # screen = "4k";
+  };
 
   networking.hostName = "ncase"; # Define your hostname.
   networking.networkmanager.enable = true;
