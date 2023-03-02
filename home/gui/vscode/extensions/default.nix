@@ -6,6 +6,7 @@ builtins.map import [
   ./esbenp.prettier-vscode.nix
   ./Gruntfuggly.todo-tree.nix
   ./telesoho.vscode-markdown-paste-image.nix
+  ./usernamehw.errorlens.nix
 
   # Languages
   ## Nix
