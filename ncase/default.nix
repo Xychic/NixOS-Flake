@@ -35,7 +35,6 @@
   };
   boot.loader.grub2-theme = {
     theme = "vimix";
-    # screen = "4k";
   };
 
   networking.hostName = "ncase"; # Define your hostname.
