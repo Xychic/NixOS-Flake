@@ -7,6 +7,7 @@ builtins.map import [
   ./Gruntfuggly.todo-tree.nix
   ./telesoho.vscode-markdown-paste-image.nix
   ./usernamehw.errorlens.nix
+  ./aaron-bond.better-comments.nix
 
   # Languages
   ## Nix
