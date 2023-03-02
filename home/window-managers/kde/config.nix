@@ -36,4 +36,10 @@
       ShowDesktopGrid = "Meta+Tab,Ctrl+F8,Show Desktop Grid";
     };
   };
+  ksmserverrc = {
+    General = {
+      confirmLogout = false;
+      loginMode = "emptySession";
+    };
+  };
 }
