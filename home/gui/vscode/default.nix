@@ -65,6 +65,10 @@
       "MarkdownPaste.path" = "\${fileDirname}/images";
       "terminal.integrated.defaultLocation" = "editor";
       "terminal.integrated.defaultProfile.linux" = "zsh";
+      "errorLens.enabledDiagnosticLevels" = [
+        "error"
+        "warning"
+      ];
     };
   };
 }
