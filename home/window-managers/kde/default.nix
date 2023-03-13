@@ -28,7 +28,10 @@ let
   ];
 in
 {
-  home.packages = with pkgs; [ wmctrl ];
+  home.packages = with pkgs; [ 
+    wmctrl
+    kcalc
+  ];
   # pkgs.writeTextFile {
   #   name = "setvd1.desktop";
   #   executable = true;
