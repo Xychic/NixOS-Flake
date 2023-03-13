@@ -98,6 +98,7 @@
                   ./home/window-managers/kde
                   ./home/cli/core
                   ./home/cli/mpd
+                  ./home/cli/cuda
                   ./home/gui/core
                   ./home/gui/vscode
                   ./home/gui/discord
