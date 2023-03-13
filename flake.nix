@@ -43,7 +43,7 @@
         inherit inputs;
       };
       modules = [
-        ./v330
+        ./devices/v330
         home-manager.nixosModules.home-manager
         (
           {
@@ -81,7 +81,8 @@
         inherit inputs;
       };
       modules = [
-        ./ncase
+        ./devices/ncase
+        ./modules/vm
         home-manager.nixosModules.home-manager
         (
           {
