@@ -64,6 +64,7 @@
                   ./home/gui/discord
                   ./home/gui/chrome
                   ./home/gui/spotify
+                  ./home/gui/onlyoffice
                 ];
               };
             };
@@ -106,6 +107,7 @@
                   ./home/gui/pavucontrol
                   ./home/gui/spotify
                   ./home/gui/teams
+                  ./home/gui/onlyoffice
                 ];
               };
             };
