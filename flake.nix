@@ -20,6 +20,10 @@
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -27,6 +31,7 @@
     nixpkgs,
     home-manager,
     grub2-themes,
+    nix-index-database,
     ...
   }: let
     nixpkgsConfig = {
@@ -70,6 +75,14 @@
           }
         )
         grub2-themes.nixosModules.default
+        nix-index-database.nixosModules.nix-index
+        { 
+          programs.nix-index-database.comma.enable = true;
+          programs.nix-index = {
+            enableBashIntegration = false;
+            enableZshIntegration = false;
+          };
+        }
       ];
     };
 

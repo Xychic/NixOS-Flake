@@ -3,7 +3,7 @@
     rustup
     gcc
     glibc
-    rust-analyzer
+    # rust-analyzer
     cargo-generate
     python310
     gnumake

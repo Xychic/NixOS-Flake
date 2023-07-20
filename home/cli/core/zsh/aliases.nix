@@ -32,7 +32,7 @@
   "-g sd" = "~/ScratchArea";
   "-g dl" = "~/Downloads";
   "-g \"...\"" = "../..";
-  test = "echo test";
+  # test = "echo test";
   ls = "exa -lhgbHm --git ";
   lst = "exa -lhgbHmT --git";
   lsa = "exa -lhgbHma --git";

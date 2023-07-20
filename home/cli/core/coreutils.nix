@@ -5,7 +5,6 @@
     neofetch
     wget
     xclip
-    comma
     openssl
     btop
     neovim
