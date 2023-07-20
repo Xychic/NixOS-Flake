@@ -28,7 +28,6 @@
   boot.loader.grub.devices = ["nodev"];
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
-  boot.loader.grub.version = 2;
   boot.loader.grub2-theme = {
     theme = "vimix";
   };
@@ -109,6 +108,22 @@
     fsType = "ntfs";
     options = ["uid=1000" "rw"];
   };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+
+    shellAliases = import ../home/cli/core/zsh/aliases.nix;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+      ];
+    };
+  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
