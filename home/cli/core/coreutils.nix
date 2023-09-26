@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    exa
+    eza
     ncdu_2
     neofetch
     wget
