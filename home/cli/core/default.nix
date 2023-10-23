@@ -6,5 +6,6 @@
       ./git.nix
       ./coreutils.nix
       ./languages.nix
+      ./rust.nix
     ];
 }

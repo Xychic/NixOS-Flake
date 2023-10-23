@@ -27,7 +27,6 @@
     devices = [ "nodev" ];
     efiSupport = true;
     useOSProber = true;
-    version = 2;
     default = 2;
     extraConfig = ''
       GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
@@ -50,7 +49,7 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   fileSystems."/mnt/data" =
-    { device = "/dev/disk/by-uuid/80AABAF0AABAE1B8";
+    { device = "/dev/disk/by-uuid/A4864EAB864E7E34";
       fsType = "ntfs";
       options = [ "rw" "uid=1000" ];
     };
@@ -60,7 +59,7 @@
       options = [ "rw" "uid=1000" ];
     };
   boot.supportedFilesystems = [ "ntfs" ];
-# networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -119,6 +118,21 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+
+    shellAliases = import ../home/cli/core/zsh/aliases.nix;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+      ];
+    };
   };
 
   # List packages installed in system profile. To search, run:
