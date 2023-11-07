@@ -3,6 +3,7 @@
     gcc
     glibc
     python310
+    mypy
     gnumake
     gdb
   ];

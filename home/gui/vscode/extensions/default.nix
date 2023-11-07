@@ -25,4 +25,5 @@ builtins.map import [
   ./ms-python.vscode-pylance.nix
   ./ms-python.python.nix
   ./njqdev.vscode-python-typehint.nix
+  ./matangover.mypy.nix
 ]
