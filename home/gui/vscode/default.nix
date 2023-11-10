@@ -69,6 +69,8 @@
         "error"
         "warning"
       ];
+      "python.analysis.typeCheckingMode" = "strict";
+      "python.analysis.autoImportCompletions" = true;
     };
   };
 }
