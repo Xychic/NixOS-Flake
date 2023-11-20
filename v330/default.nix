@@ -23,17 +23,23 @@
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.devices = ["nodev"];
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub2-theme = {
-    theme = "vimix";
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = ["nodev"];
+      efiSupport = true;
+      useOSProber = true;
+    };
+    grub2-theme = {
+      theme = "vimix";
+    };
   };
 
-  networking.hostName = "v330"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "v330"; # Define your hostname.
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -41,9 +47,13 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp1s0.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
+  networking = {
+    useDHCP = false;
+    interfaces = {
+      enp1s0.useDHCP = true;
+      wlp2s0.useDHCP = true;
+    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -60,15 +70,17 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    # Enable the Plasma 5 Desktop Environment.
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
 
-  # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+    # Configure keymap in X11
+    layout = "gb";
+    # services.xserver.xkbOptions = "eurosign:e";
+  };
 
-  # Configure keymap in X11
-  services.xserver.layout = "gb";
-  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

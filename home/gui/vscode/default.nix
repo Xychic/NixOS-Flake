@@ -10,12 +10,10 @@
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
     userSettings = {
-      "editor.renderWhitespace" = "trailing";
+      "editor.renderWhitespace" = "all";
       "update.mode" = "none";
       "telemetry.telemetryLevel" = "off";
       "editor.fontFamily" = "'Cascadia Mono',monospace";
-      "telemetry.enableTelemetry" = false;
-      "telemetry.enableCrashReporter" = false;
       "editor.suggestSelection" = "first";
       "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
       "code-runner.runInTerminal" = true;
@@ -71,6 +69,9 @@
       ];
       "python.analysis.typeCheckingMode" = "strict";
       "python.analysis.autoImportCompletions" = true;
+      "editor.fontLigatures" = false;
+      "nix.serverPath" = "nixd";
+      "nix.enableLanguageServer" = true;
     };
   };
 }

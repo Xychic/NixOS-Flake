@@ -21,44 +21,45 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    devices = [ "nodev" ];
-    efiSupport = true;
-    useOSProber = true;
-    default = 2;
-    extraConfig = ''
-      GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
-    '';
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+      default = 2;
+      extraConfig = ''
+        GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
+      '';
+    };
+    grub2-theme = {
+      theme = "vimix";
+    };
+    supportedFilesystems = [ "ntfs" ];
   };
-  boot.loader.grub2-theme = {
-    theme = "vimix";
+
+  networking = {
+    hostName = "ncase"; # Define your hostname.
+    networkmanager.enable = true;
   };
-
-  networking.hostName = "ncase"; # Define your hostname.
-  networking.networkmanager.enable = true;
-
-  # NVIDIA drivers are unfree.
-  nixpkgs.config.allowUnfree = true;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  fileSystems."/mnt/data" =
-    { device = "/dev/disk/by-uuid/A4864EAB864E7E34";
-      fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
-    };
-  fileSystems."/mnt/steam" =
-    { device = "/dev/disk/by-uuid/8A60D90260D8F643";
-      fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
-    };
-  boot.supportedFilesystems = [ "ntfs" ];
+  fileSystems = {
+    "/mnt/data" = {
+        device = "/dev/disk/by-uuid/A4864EAB864E7E34";
+        fsType = "ntfs";
+        options = [ "rw" "uid=1000" ];
+      };
+    "/mnt/steam" = {
+        device = "/dev/disk/by-uuid/8A60D90260D8F643";
+        fsType = "ntfs";
+        options = [ "rw" "uid=1000" ];
+      };
+  };
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -68,9 +69,13 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlp5s0.useDHCP = true;
+  networking = {
+    useDHCP = false;
+    interfaces = {
+      enp4s0.useDHCP = true;
+      wlp5s0.useDHCP = true;
+    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -83,13 +88,20 @@
   #   keyMap = "us";
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+
+  services.xserver = {
+    # NVIDIA drivers are unfree.
+    nixpkgs.config.allowUnfree = true;
+    videoDrivers = [ "nvidia" ];
+
+    # Enable the X11 windowing system.
+    enable = true;
 
 
-  # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+    # Enable the Plasma 5 Desktop Environment.
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+  };
   
 
   # Configure keymap in X11
@@ -132,7 +144,7 @@
       plugins = [
         "git"
       ];
-    };
+    }
   };
 
   # List packages installed in system profile. To search, run:
