@@ -3,8 +3,7 @@
   lib,
   ...
 }: {
-  home.packages = let
-  in [
+  home.packages = [
     (
       pkgs.callPackage ./discord.nix {}
     )

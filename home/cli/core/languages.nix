@@ -6,5 +6,7 @@
     mypy
     gnumake
     gdb
+    statix
+    nixd
   ];
 }
