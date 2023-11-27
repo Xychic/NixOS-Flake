@@ -8,5 +8,6 @@
     openssl
     btop
     neovim
+    pkg-config-unwrapped
   ];
 }
