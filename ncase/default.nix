@@ -139,6 +139,7 @@
   };
 
   programs.zsh = {
+    shellInit = "export PKG_CONFIG_PATH=${pkgs.openssl.dev}/lib/pkgconfig";
     enable = true;
     enableCompletion = true;
     autosuggestions.enable = true;
