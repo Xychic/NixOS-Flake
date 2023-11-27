@@ -119,7 +119,7 @@
                   ./home/gui/chrome
                   ./home/gui/pavucontrol
                   ./home/gui/spotify
-                  ./home/gui/teams
+                  # ./home/gui/teams # removed as unmaintained by upstream
                   ./home/gui/onlyoffice
                 ];
               };
