@@ -38,6 +38,10 @@
       "workbench.iconTheme" = "vscode-great-icons";
       "rust-analyzer.procMacro.enable" = false;
       "rust-analyzer.inlayHints.lifetimeElisionHints.enable" =  "always";
+      "rust-analyzer.check.command" = "clippy";
+      "rust-analyzer.check.extraArgs" = [
+        "--" "-W" "clippy::pedantic"
+      ];
       "diffEditor.ignoreTrimWhitespace" = false;
       "[javascript]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";

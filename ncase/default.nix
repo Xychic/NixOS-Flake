@@ -21,22 +21,24 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      useOSProber = true;
-      default = 2;
-      extraConfig = ''
-        GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
-      '';
-    };
-    grub2-theme = {
-      theme = "vimix";
-    };
+  boot = {
     supportedFilesystems = [ "ntfs" ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+        default = 2;
+        extraConfig = ''
+          GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=USB-C-0:D"
+        '';
+      };
+      grub2-theme = {
+        theme = "vimix";
+      };
+    };
   };
 
   networking = {
@@ -89,9 +91,9 @@
   # };
 
 
+  # NVIDIA drivers are unfree.
+  nixpkgs.config.allowUnfree = true;
   services.xserver = {
-    # NVIDIA drivers are unfree.
-    nixpkgs.config.allowUnfree = true;
     videoDrivers = [ "nvidia" ];
 
     # Enable the X11 windowing system.
@@ -102,7 +104,7 @@
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
   };
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -121,6 +123,10 @@
     pulse.enable = true;
   };
   # hardware.pulseaudio.enable = true;
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -144,7 +150,7 @@
       plugins = [
         "git"
       ];
-    }
+    };
   };
 
   # List packages installed in system profile. To search, run:
