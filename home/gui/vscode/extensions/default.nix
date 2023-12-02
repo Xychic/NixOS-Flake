@@ -24,6 +24,7 @@ builtins.map import [
   ## Python
   ./ms-python.vscode-pylance.nix
   ./ms-python.python.nix
+  ./ms-python.black-formatter.nix
   ./njqdev.vscode-python-typehint.nix
   ./matangover.mypy.nix
 ]

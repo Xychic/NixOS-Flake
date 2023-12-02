@@ -27,6 +27,7 @@
         "rust" = "cd $dir && cargo fmt && cargo test --release && cargo run --release";
         "go" = "cd $dir && go test -v && go run main.go";
         "makefile" = "cd $dir && make && ./$(head -n 1 $fileName | cut -d : -f 1)";
+        "nix" = "cd $dir && nix eval -f $fileName \"result\" --show-trace";
       };
       "python.languageServer" = "Pylance";
       "explorer.confirmDelete" = false;
