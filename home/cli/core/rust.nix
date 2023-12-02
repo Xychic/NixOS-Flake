@@ -3,7 +3,7 @@
     (import "${
         fetchTarball {
             url = "https://github.com/nix-community/fenix/archive/main.tar.gz";
-            sha256 = "10wcrym02fzshzl9x2bq6ymyw6g9pszxmw0r12p8ncr3ax8srzaq";
+            sha256 = "sha256:0r43bb293n6i82a27sv62paj5h9maz9wqlg7ww3gwssqs1k17mjh";
         }
     }/overlay.nix")
   ];
