@@ -8,5 +8,6 @@
     gdb
     statix
     nixd
+    go
   ];
 }
