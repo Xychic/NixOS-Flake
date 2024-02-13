@@ -37,4 +37,5 @@
   lst = "exa -lhgbHmT --git";
   lsa = "exa -lhgbHma --git";
   update = "sudo nixos-rebuild switch";
+  comma-update = "zsh -c \"filename=\\\"index-\$(uname -m | sed 's/^arm64$/aarch64/')-\$(uname | tr A-Z a-z)\\\" && mkdir -p ~/.cache/nix-index && cd ~/.cache/nix-index && wget -q -N https://github.com/Mic92/nix-index-database/releases/latest/download/$filename && ln -f $filename files\"";
 }
