@@ -9,5 +9,6 @@
     statix
     nixd
     go
+    nasm
   ];
 }
