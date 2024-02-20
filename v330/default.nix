@@ -77,7 +77,7 @@
     desktopManager.plasma5.enable = true;
 
     # Configure keymap in X11
-    layout = "gb";
+    xkb.layout = "gb";
     # services.xserver.xkbOptions = "eurosign:e";
   };
 
