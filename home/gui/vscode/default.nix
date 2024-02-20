@@ -28,6 +28,10 @@
         "go" = "cd $dir && go test -v && go run main.go";
         "makefile" = "cd $dir && make && ./$(head -n 1 $fileName | cut -d : -f 1)";
         "nix" = "cd $dir && nix eval -f $fileName \"result\" --show-trace";
+        "asm" = "cd $dir && nasm -f elf64 -F dwarf $fileName && echo $fileNameWithoutExt.o";
+      };
+      "code-runner.executorMapByGlob" = {
+        "*.asm" = "cd $dir && nasm -f elf64 -F dwarf $fileName && ld -m elf_x86_64 $fileNameWithoutExt.o -o $fileNameWithoutExt && ./$fileNameWithoutExt";
       };
       "python.languageServer" = "Pylance";
       "explorer.confirmDelete" = false;
