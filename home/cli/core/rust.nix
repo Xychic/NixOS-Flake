@@ -2,8 +2,8 @@
   nixpkgs.overlays = [
     (import "${
         fetchTarball {
-            url = "https://github.com/nix-community/fenix/archive/846fc5ddb810c36411de6587384bef86c2db5127.tar.gz";
-            sha256 = "sha256:0ys4h8fbbk8wg2ylqh5y6ld53x2wkmx5rclczanzlafvcfzh5jgp";
+            url = "https://github.com/nix-community/fenix/archive/a0f0f781683e4e93b61beaf1dfee4dd34cf3a092.tar.gz";
+            sha256 = "sha256:01n6ffh30bwfi86dim78mgigs46ljdbklll7dmys3xbr64p5js3q";
         }
     }/overlay.nix")
   ];
