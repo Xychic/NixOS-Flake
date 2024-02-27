@@ -109,9 +109,12 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "docker"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
+
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
