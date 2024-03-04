@@ -65,6 +65,7 @@
                   ./home/window-managers/kde
                   ./home/cli/core
                   ./home/cli/mpd
+                  ./home/cli/programming/all.nix
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
@@ -113,6 +114,7 @@
                   ./home/cli/core
                   ./home/cli/mpd
                   ./home/cli/cuda
+                  ./home/cli/programming/all.nix
                   ./home/gui/core
                   ./home/gui/vscode
                   ./home/gui/discord
