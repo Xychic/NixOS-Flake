@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     dotDir = ".config/zsh";
     plugins = (import ./plugins.nix) pkgs;
     shellAliases = import ./aliases.nix;
