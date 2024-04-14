@@ -81,6 +81,7 @@
       "editor.fontLigatures" = false;
       "nix.serverPath" = "nixd";
       "nix.enableLanguageServer" = true;
+      "editor.stickyScroll.enabled" = false;
     };
   };
 }

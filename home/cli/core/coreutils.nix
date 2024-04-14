@@ -9,5 +9,7 @@
     btop
     neovim
     pkg-config-unwrapped
+    qemu
+    cascadia-code
   ];
 }

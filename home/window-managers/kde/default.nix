@@ -31,6 +31,7 @@ in
   home.packages = with pkgs; [ 
     wmctrl
     kcalc
+    plasma5Packages.plasma-sdk
   ];
   # pkgs.writeTextFile {
   #   name = "setvd1.desktop";
