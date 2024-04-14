@@ -52,15 +52,24 @@
 
   fileSystems = {
     "/mnt/data" = {
-        device = "/dev/disk/by-uuid/A4864EAB864E7E34";
-        fsType = "ntfs";
-        options = [ "rw" "uid=1000" ];
-      };
+      device = "/dev/disk/by-uuid/A4864EAB864E7E34";
+      fsType = "ntfs";
+      options = [ "rw" "uid=1000" ];
+    };
     "/mnt/steam" = {
-        device = "/dev/disk/by-uuid/8A60D90260D8F643";
-        fsType = "ntfs";
-        options = [ "rw" "uid=1000" ];
-      };
+      device = "/dev/disk/by-uuid/8A60D90260D8F643";
+      fsType = "ntfs";
+      options = [ "rw" "uid=1000" ];
+    };
+    "/mnt/docker" = {
+      device = "/dev/disk/by-uuid/9ffa4c99-3fd1-4272-b79d-cdad08d749a8";
+      fsType = "ext4";
+      #  options = [ "rw" "uid=1000" ];
+    };
+    "/mnt/scratch" = {
+      device = "/dev/disk/by-uuid/7ea8901d-a5d3-47ae-929c-638a96bf30dc";
+      fsType = "ext4";
+    };
   };
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -134,7 +143,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ 
+      "wheel" # Enable ‘sudo’ for the user.
+      "docker"
+    ]; 
     shell = pkgs.zsh;
   };
 
@@ -167,6 +179,9 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.extraOptions = "--data-root /mnt/docker";
 
   # List services that you want to enable:
 
