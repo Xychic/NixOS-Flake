@@ -102,16 +102,18 @@
 
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfree = true;
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
+  services = {
+    xserver = {
+      videoDrivers = [ "nvidia" ];
 
-    # Enable the X11 windowing system.
-    enable = true;
+      # Enable the X11 windowing system.
+      enable = true;
 
 
-    # Enable the Plasma 5 Desktop Environment.
+      # Enable the Plasma 5 Desktop Environment.
+      desktopManager.plasma5.enable = true;
+    };
     displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
   };
 
 

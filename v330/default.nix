@@ -70,17 +70,16 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    # Enable the Plasma 5 Desktop Environment.
+  services = {
+    xserver = {
+      enable = true;
+      desktopManager.plasma5.enable = true;
+      # Configure keymap in X11
+      xkb.layout = "gb";
+      # services.xserver.xkbOptions = "eurosign:e";
+    };
     displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
-
-    # Configure keymap in X11
-    xkb.layout = "gb";
-    # services.xserver.xkbOptions = "eurosign:e";
   };
-
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

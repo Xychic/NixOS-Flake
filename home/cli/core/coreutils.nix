@@ -11,5 +11,6 @@
     pkg-config-unwrapped
     qemu
     cascadia-code
+    unzip
   ];
 }
