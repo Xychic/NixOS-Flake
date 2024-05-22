@@ -64,13 +64,12 @@
                 imports = [
                   ./home/window-managers/kde
                   ./home/cli/core
-                  ./home/cli/mpd
                   ./home/cli/programming/all.nix
                   ./home/gui/vscode
                   ./home/gui/discord
                   ./home/gui/chrome
                   ./home/gui/spotify
-                  ./home/gui/onlyoffice
+                  # ./home/gui/onlyoffice
                 ];
               };
             };

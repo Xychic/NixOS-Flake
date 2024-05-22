@@ -12,5 +12,6 @@
     qemu
     cascadia-code
     unzip
+    qmk
   ];
 }
