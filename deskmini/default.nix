@@ -123,9 +123,12 @@
     pulse.enable = true;
   };
   # hardware.pulseaudio.enable = true;
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = false; # powers up the default Bluetooth controller on boot
+  hardware = {
+    bluetooth = {
+      enable = true; # enables support for Bluetooth
+      powerOnBoot = false; # powers up the default Bluetooth controller on boot
+    };
+    keyboard.qmk.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -165,6 +168,7 @@
       ];
     };
   };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
