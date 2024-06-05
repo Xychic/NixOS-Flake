@@ -138,5 +138,52 @@
         }
       ];
     };
+
+    # Asrock Deskmini
+    nixosConfigurations.deskmini = nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      specialArgs = {
+        systemName = "DESKMINI";
+        inherit inputs;
+      };
+      modules = [
+        ./deskmini
+        home-manager.nixosModules.home-manager
+        (
+          {
+            pkgs,
+            home-manager,
+            ...
+          }: {
+            home-manager = {
+              extraSpecialArgs = specialArgs;
+              users.jacob = {
+                home.stateVersion = "23.11";
+                nixpkgs = nixpkgsConfig;
+                imports = [
+                  ./home/window-managers/kde
+                  ./home/cli/core
+                  ./home/cli/programming/all.nix
+                  ./home/gui/vscode
+                  ./home/gui/discord
+                  ./home/gui/chrome
+                  ./home/gui/spotify
+                  # ./home/gui/onlyoffice
+                ];
+              };
+            };
+          }
+        )
+        grub2-themes.nixosModules.default
+        nix-index-database.nixosModules.nix-index
+        { 
+          programs.nix-index-database.comma.enable = true;
+          programs.nix-index = {
+            enableBashIntegration = false;
+            enableZshIntegration = false;
+          };
+        }
+      ];
+    };
   };
 }
