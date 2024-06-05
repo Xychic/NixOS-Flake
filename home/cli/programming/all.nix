@@ -7,5 +7,6 @@
         ./nix.nix
         ./python.nix
         ./rust.nix
+        ./qmk.nix
     ];
 }
