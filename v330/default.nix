@@ -122,9 +122,9 @@
   ];
 
   fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/FC76DE5C76DE176C";
-    fsType = "ntfs";
-    options = ["uid=1000" "rw"];
+    device = "/dev/disk/by-uuid/26EF-8CA0";
+    fsType = "exfat";
+    options = ["uid=1000" "gid=100"];
   };
 
   programs.zsh = {
