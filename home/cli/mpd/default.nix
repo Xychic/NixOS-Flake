@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     mpd = {
       enable = true;
@@ -23,12 +24,9 @@
     };
   };
 
-
   programs.ncmpcpp = {
     enable = true;
-    package = pkgs.ncmpcpp.override {
-      visualizerSupport = true;
-    };
+    package = pkgs.ncmpcpp.override { visualizerSupport = true; };
     settings = {
       visualizer_fps = 60;
       user_interface = "alternative";

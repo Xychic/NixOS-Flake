@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [ cudatoolkit ];
   home.sessionVariables = {
     CUDA_PATH = pkgs.cudatoolkit;

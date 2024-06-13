@@ -1,6 +1,14 @@
-{ config, lib, pkgs, inputs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  self,
+  ...
+}:
 let
-  toValue = v:
+  toValue =
+    v:
     if builtins.isString v then
       v
     else if builtins.isBool v then
@@ -9,26 +17,28 @@ let
       builtins.toString v
     else
       builtins.abort ("Unknown value type: " ++ builtins.toString v);
-  lines = lib.flatten (lib.mapAttrsToList
-    (file:
-      lib.mapAttrsToList
-        (group:
-          lib.mapAttrsToList
-            (key: value:
-              "$DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file $confdir/'${file}' --group '${group}' --key '${key}' '${toValue value}'"
-            )
+  lines =
+    lib.flatten (
+      lib.mapAttrsToList (
+        file:
+        lib.mapAttrsToList (
+          group:
+          lib.mapAttrsToList (
+            key: value:
+            "$DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file $confdir/'${file}' --group '${group}' --key '${key}' '${toValue value}'"
+          )
         )
+      ) (import ./config.nix)
     )
-    (import ./config.nix)
-  ) ++ [
-    "$DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file $confdir/'kscreenlockerrc' --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' --key 'Image' '${inputs.wallpapers}/nixos.svg'"
-    "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-wallpaperimage '${inputs.wallpapers}/nixos.svg'"
-    "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-desktoptheme 'breeze-dark'"
-    "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-lookandfeel -a 'org.kde.breezedark.desktop'"
-  ];
+    ++ [
+      "$DRY_RUN_CMD ${pkgs.libsForQt5.kconfig}/bin/kwriteconfig5 --file $confdir/'kscreenlockerrc' --group 'Greeter' --group 'Wallpaper' --group 'org.kde.image' --group 'General' --key 'Image' '${inputs.wallpapers}/nixos.svg'"
+      "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-wallpaperimage '${inputs.wallpapers}/nixos.svg'"
+      "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-desktoptheme 'breeze-dark'"
+      "$DRY_RUN_CMD ${pkgs.plasma-workspace}/bin/plasma-apply-lookandfeel -a 'org.kde.breezedark.desktop'"
+    ];
 in
 {
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     wmctrl
     kcalc
     plasma5Packages.plasma-sdk
@@ -48,7 +58,7 @@ in
   #     X-KDE-autostart-phase=1
   #   '';
   # }
-  
+
   home.activation.kwriteconfig5 = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     _() {
       confdir="''${XDG_CONFIG_HOME:-$HOME/.config}"

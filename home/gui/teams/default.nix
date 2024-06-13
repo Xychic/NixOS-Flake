@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [ 
-    teams
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ teams ];
 }

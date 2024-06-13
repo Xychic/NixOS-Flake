@@ -6,12 +6,13 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    nixPath = ["/etc/nix/path"];
+    nixPath = [ "/etc/nix/path" ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
   environment.etc."/nix/path/nixpkgs".source = inputs.nixpkgs;
@@ -28,7 +29,7 @@
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      devices = ["nodev"];
+      devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
     };
@@ -41,7 +42,6 @@
     hostName = "deskmini"; # Define your hostname.
     networkmanager.enable = true;
   };
-  
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -62,7 +62,14 @@
   systemd.services.decrypt-data-partition = {
     wantedBy = [ "multi-user.target" ];
     description = "Decrypt veracrypt data partition";
-    path = [pkgs.bash pkgs.coreutils pkgs.veracrypt pkgs.lvm2 pkgs.util-linux pkgs.systemd ];
+    path = [
+      pkgs.bash
+      pkgs.coreutils
+      pkgs.veracrypt
+      pkgs.lvm2
+      pkgs.util-linux
+      pkgs.systemd
+    ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = "yes";
@@ -76,8 +83,8 @@
       enable = true;
       wantedBy = [ "multi-user.target" ];
       description = "Mount veracrypt data partition";
-      after = ["decrypt-data-partition.service"];
-      requires = ["decrypt-data-partition.service"];
+      after = [ "decrypt-data-partition.service" ];
+      requires = [ "decrypt-data-partition.service" ];
       where = "/mnt/data";
       type = "exfat";
       what = "/dev/mapper/cryptdata";
@@ -104,7 +111,6 @@
     };
     displayManager.sddm.enable = true;
   };
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -135,7 +141,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.jacob = {
+  users.users.jacob = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -164,12 +170,9 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = [
-        "git"
-      ];
+      plugins = [ "git" ];
     };
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

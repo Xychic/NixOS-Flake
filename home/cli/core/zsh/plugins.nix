@@ -1,4 +1,5 @@
-{pkgs, ...}: [
+{ pkgs, ... }:
+[
   {
     name = "zsh-autosuggestions";
     src = pkgs.fetchFromGitHub {

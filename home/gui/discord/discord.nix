@@ -2,7 +2,8 @@
   lib,
   discord,
   firefox-unwrapped,
-}: let
+}:
+let
   discord-flags = [
     "--ignore-gpu-blocklist"
     "--disable-features=UseOzonePlatform"
@@ -13,29 +14,20 @@
     "--no-sandbox"
   ];
 
-  searchName = name: drv:
-    name
-    == (builtins.head
-      (lib.splitString
-        "-"
-        drv.name));
+  searchName = name: drv: name == (builtins.head (lib.splitString "-" drv.name));
 
   nss =
-    lib.findSingle
-    (searchName "nss")
-    (throw "Could not find firefox nss")
-    (throw "Firefox had multiple nss?")
-    firefox-unwrapped.buildInputs;
+    lib.findSingle (searchName "nss") (throw "Could not find firefox nss")
+      (throw "Firefox had multiple nss?")
+      firefox-unwrapped.buildInputs;
 
-  discord-unwrapped = discord.override {
-    inherit nss;
-  };
+  discord-unwrapped = discord.override { inherit nss; };
 in
-  discord-unwrapped.overrideAttrs (
-    oldAttrs: rec {
-      desktopItem = oldAttrs.desktopItem.override {
-        exec = "${discord-unwrapped}/bin/Discord " + lib.concatStringsSep " " discord-flags;
-      };
-      installPhase = builtins.replaceStrings ["${oldAttrs.desktopItem}"] ["${desktopItem}"] oldAttrs.installPhase;
-    }
-  )
+discord-unwrapped.overrideAttrs (oldAttrs: rec {
+  desktopItem = oldAttrs.desktopItem.override {
+    exec = "${discord-unwrapped}/bin/Discord " + lib.concatStringsSep " " discord-flags;
+  };
+  installPhase = builtins.replaceStrings [ "${oldAttrs.desktopItem}" ] [
+    "${desktopItem}"
+  ] oldAttrs.installPhase;
+})
