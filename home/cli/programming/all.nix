@@ -1,12 +1,12 @@
-{...}: {
-  imports =
-    [
-        ./assembly.nix
-        ./c.nix
-        ./go.nix
-        ./nix.nix
-        ./python.nix
-        ./rust.nix
-        ./qmk.nix
-    ];
+{ ... }:
+{
+  imports = [
+    ./assembly.nix
+    ./c.nix
+    ./go.nix
+    ./nix.nix
+    ./python.nix
+    ./rust.nix
+    ./qmk.nix
+  ];
 }

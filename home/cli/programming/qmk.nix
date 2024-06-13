@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    qmk
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ qmk ];
 }

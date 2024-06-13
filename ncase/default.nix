@@ -7,19 +7,20 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    nixPath = ["/etc/nix/path"];
+    nixPath = [ "/etc/nix/path" ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
   environment.etc."/nix/path/nixpkgs".source = inputs.nixpkgs;
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     supportedFilesystems = [ "ntfs" ];
@@ -54,12 +55,18 @@
     "/mnt/data" = {
       device = "/dev/disk/by-uuid/A4864EAB864E7E34";
       fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
+      options = [
+        "rw"
+        "uid=1000"
+      ];
     };
     "/mnt/steam" = {
       device = "/dev/disk/by-uuid/8A60D90260D8F643";
       fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
+      options = [
+        "rw"
+        "uid=1000"
+      ];
     };
     "/mnt/docker" = {
       device = "/dev/disk/by-uuid/9ffa4c99-3fd1-4272-b79d-cdad08d749a8";
@@ -99,7 +106,6 @@
   #   keyMap = "us";
   # };
 
-
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfree = true;
   services = {
@@ -109,13 +115,11 @@
       # Enable the X11 windowing system.
       enable = true;
 
-
       # Enable the Plasma 5 Desktop Environment.
       desktopManager.plasma5.enable = true;
     };
     displayManager.sddm.enable = true;
   };
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -145,10 +149,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacob = {
     isNormalUser = true;
-    extraGroups = [ 
+    extraGroups = [
       "wheel" # Enable ‘sudo’ for the user.
       "docker"
-    ]; 
+    ];
     shell = pkgs.zsh;
   };
 
@@ -162,9 +166,7 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = [
-        "git"
-      ];
+      plugins = [ "git" ];
     };
   };
 
@@ -203,5 +205,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }

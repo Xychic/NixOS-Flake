@@ -1,13 +1,11 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [ 
-    vscode
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ vscode ];
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions;
-      [
-        rust-lang.rust-analyzer
-      ]
+    extensions =
+      with pkgs.vscode-extensions;
+      [ rust-lang.rust-analyzer ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace (import ./extensions);
     userSettings = {
       "editor.renderWhitespace" = "all";
@@ -42,10 +40,12 @@
       "editor.guides.bracketPairs" = true;
       "workbench.iconTheme" = "vscode-great-icons";
       "rust-analyzer.procMacro.enable" = false;
-      "rust-analyzer.inlayHints.lifetimeElisionHints.enable" =  "always";
+      "rust-analyzer.inlayHints.lifetimeElisionHints.enable" = "always";
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.check.extraArgs" = [
-        "--" "-W" "clippy::pedantic"
+        "--"
+        "-W"
+        "clippy::pedantic"
       ];
       "diffEditor.ignoreTrimWhitespace" = false;
       "[javascript]" = {

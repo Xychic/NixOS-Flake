@@ -1,13 +1,6 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = [
-    (
-      pkgs.callPackage ./discord.nix {}
-    )
-  ];
+  home.packages = [ (pkgs.callPackage ./discord.nix { }) ];
 
   home.file.".config/discord/settings.json" = {
     text = builtins.toJSON {

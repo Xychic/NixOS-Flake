@@ -6,12 +6,13 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    nixPath = ["/etc/nix/path"];
+    nixPath = [ "/etc/nix/path" ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
   environment.etc."/nix/path/nixpkgs".source = inputs.nixpkgs;
@@ -27,7 +28,7 @@
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      devices = ["nodev"];
+      devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
     };
@@ -117,14 +118,15 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  environment.systemPackages = with pkgs; [ vim ];
 
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/26EF-8CA0";
     fsType = "exfat";
-    options = ["uid=1000" "gid=100"];
+    options = [
+      "uid=1000"
+      "gid=100"
+    ];
   };
 
   programs.zsh = {
@@ -137,12 +139,9 @@
 
     ohMyZsh = {
       enable = true;
-      plugins = [
-        "git"
-      ];
+      plugins = [ "git" ];
     };
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
