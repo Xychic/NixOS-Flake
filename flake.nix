@@ -179,5 +179,52 @@
           }
         ];
       };
+
+      # PI 3
+      nixosConfigurations.pi3 = nixpkgs.lib.nixosSystem rec {
+        system = "aarch64-linux";
+        specialArgs = {
+          systemName = "pi3";
+          inherit inputs;
+        };
+        modules = [
+          ./pi3
+          home-manager.nixosModules.home-manager
+          (
+            { pkgs, home-manager, ... }:
+            {
+              home-manager = {
+                extraSpecialArgs = specialArgs;
+                users.pi = {
+                  home.stateVersion = "23.11";
+                  nixpkgs = nixpkgsConfig;
+                  imports = [
+                    ./home/window-managers/kde
+                    # ./home/cli/core
+                    # ./home/cli/mpd
+                    # # ./home/cli/cuda
+                    # ./home/cli/programming/all.nix
+                    # ./home/gui/core
+                    # ./home/gui/vscode
+                    # ./home/gui/discord
+                    # ./home/gui/chrome
+                    # ./home/gui/pavucontrol
+                    # ./home/gui/spotify
+                    # ./home/gui/onlyoffice
+                  ];
+                };
+              };
+            }
+          )
+          nix-index-database.nixosModules.nix-index
+          {
+            programs.nix-index-database.comma.enable = true;
+            programs.nix-index = {
+              enableBashIntegration = false;
+              enableZshIntegration = false;
+            };
+          }
+        ];
+      };
     };
 }
