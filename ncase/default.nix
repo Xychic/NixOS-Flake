@@ -53,11 +53,14 @@
 
   fileSystems = {
     "/mnt/data" = {
-      device = "/dev/disk/by-uuid/A4864EAB864E7E34";
-      fsType = "ntfs";
+      device = "/dev/disk/by-uuid/E8C0-C177";
+      fsType = "exfat";
       options = [
         "rw"
         "uid=1000"
+        "gid=100"
+        "umask=0077"
+        "nofail"
       ];
     };
     "/mnt/steam" = {
@@ -66,16 +69,18 @@
       options = [
         "rw"
         "uid=1000"
+        "nofail"
       ];
     };
     "/mnt/docker" = {
       device = "/dev/disk/by-uuid/9ffa4c99-3fd1-4272-b79d-cdad08d749a8";
       fsType = "ext4";
-      #  options = [ "rw" "uid=1000" ];
+      options = [ "nofail" ];
     };
     "/mnt/scratch" = {
       device = "/dev/disk/by-uuid/7ea8901d-a5d3-47ae-929c-638a96bf30dc";
       fsType = "ext4";
+      options = [ "nofail" ];
     };
   };
   # networking.hostName = "nixos"; # Define your hostname.
