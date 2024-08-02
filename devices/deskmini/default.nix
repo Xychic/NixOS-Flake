@@ -166,7 +166,7 @@
     enableCompletion = true;
     autosuggestions.enable = true;
 
-    shellAliases = import ../home/cli/core/zsh/aliases.nix;
+    shellAliases = import ../../home/cli/core/zsh/aliases.nix;
 
     ohMyZsh = {
       enable = true;
