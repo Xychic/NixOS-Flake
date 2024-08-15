@@ -12,6 +12,7 @@ builtins.map import [
   # Languages
   ## Nix
   ./bbenoist.Nix.nix
+  ./brettm12345.nixfmt-vscode.nix
   ./arrterian.nix-env-selector.nix
   ## Go
   ./golang.Go.nix

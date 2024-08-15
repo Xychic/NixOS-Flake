@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ vscode ];
+  home.packages = with pkgs; [
+    vscode
+    nixfmt-rfc-style
+  ];
   programs.vscode = {
     enable = true;
     extensions =
