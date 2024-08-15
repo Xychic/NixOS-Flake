@@ -1,5 +1,5 @@
 {
     "code-runner.executorMap": {
-        "nix": "cd \"$workspaceRoot\" && git add . && nixos-rebuild --flake . -L --use-remote-sudo switch",
+        "nix": "cd \"$workspaceRoot\" && nixfmt . && git add . && nixos-rebuild --flake . -L --use-remote-sudo switch",
     },
 }
