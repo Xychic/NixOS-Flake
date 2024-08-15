@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ teams ];
+  home.packages = with pkgs; [ teams-for-linux ];
 }

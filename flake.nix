@@ -162,7 +162,7 @@
                     ./home/gui/discord
                     ./home/gui/chrome
                     ./home/gui/spotify
-                    # ./home/gui/onlyoffice
+                    ./home/gui/teams
                   ];
                 };
               };
