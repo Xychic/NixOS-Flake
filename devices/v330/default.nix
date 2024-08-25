@@ -60,8 +60,11 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.dhcpcd.enable = false;
+  systemd = {
+    services.NetworkManager-wait-online.enable = false;
+    # https://github.com/systemd/systemd/issues/33412#issuecomment-2286210112
+    units."dev-tpmrm0.device".enable = false;
+  };
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -154,7 +157,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
