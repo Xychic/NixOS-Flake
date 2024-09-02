@@ -125,6 +125,7 @@
     };
     displayManager.sddm.enable = true;
   };
+  hardware.nvidia.open = false;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
